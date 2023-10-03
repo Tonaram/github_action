@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 
 
     - name: Print Hello World and PR info
       run: |
@@ -20,4 +22,4 @@ jobs:
         echo "Último commit: "
         git log -1
         echo "Cambios entre el último commit y el default branch:"
-        git diff ${{ github.base_ref }}..${{ github.head_ref }}
+        git diff origin/${{ github.base_ref }}..origin/${{ github.head_ref }}
